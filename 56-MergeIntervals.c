@@ -16,8 +16,8 @@ public:
         return ans;
     }
 };
-/*8/25풀이:
-class Solution{
+//8/25풀이:
+class Solution2{
 public:
 
 vector<vector<int>> merge(vector<vector<int>>& intervals){
@@ -39,7 +39,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals){
     return ans;
 
 
-class Solution {
+class Solution3{
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         vector<vector<int>> ans;
@@ -60,7 +60,7 @@ public:
 
 
 
-class Solution {
+class Solution4{
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         vector<vector<int>> ans;
@@ -77,7 +77,7 @@ public:
 };
 
 
-class Solution {
+class Solution5 {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         stack<vector<int>> stack;
