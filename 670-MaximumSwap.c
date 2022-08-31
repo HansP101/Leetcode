@@ -2,6 +2,37 @@ class Solution {
 public:
     int maximumSwap(int num) {
         string temp=to_string(num);
+        if (temp.size()<=1) return num;
+        string sortedTemp=temp;
+        sort(sortedTemp.begin(), sortedTemp.end(), [](auto &a, auto&b){return a>b;});
+       
+        int first=0, second=0;
+        char target;
+        for(first, second; first<temp.size() and second<temp.size(); ){
+            if(temp[first]==sortedTemp[second])
+            {first++;
+             second++;}
+            else {
+                target=sortedTemp[second];  
+                break;
+              }
+        }
+        
+        if (first==temp.size()) return stoi(temp);
+        
+        for(int i=first; i<temp.size(); i++){
+            if(temp[i]==target) second=i;
+        }
+
+        swap(temp[first], temp[second]);
+        return stoi(temp);
+    }
+};\
+
+class Solution {
+public:
+    int maximumSwap(int num) {
+        string temp=to_string(num);
         int fr=0, to=0;
         bool found=false;
         for(int i=0; found==false and i<temp.size()-1; i++){
