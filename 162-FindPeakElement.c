@@ -7,7 +7,7 @@ public:
     int binarySearch(int start, int end, vector<int>& nums){
         while(start<end){
             int mid=(start+end)/2;
-            if(nums[mid]>nums[mid+1])
+            if(nums[mid]>nums[mid+1]) //Peak exist in increasing interval.  
                 end=mid;
             else start=mid+1;
         }
