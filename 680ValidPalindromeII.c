@@ -1,5 +1,28 @@
 class Solution {
 public:
+    bool block=false;
+    bool validPalindrome(string s) {
+       return palindromecheck(s, 0, s.size()-1, block); 
+    }
+    
+    bool palindromecheck(string s, int i, int j, bool block){
+        while(s[i]==s[j] and i<j){
+            i++;
+            j--;
+        }
+        if(i==j or (i-j==1 and s[j]==s[i])) return true;
+            if(!block){
+                 block=true;
+                return palindromecheck(s, i+1, j, block)|| palindromecheck(s, i, j-1, block);}
+        
+            return false;
+        
+    }
+};
+
+
+class Solution {
+public:
     bool validPalindrome(string s) {
        return palindromeCheckByIndex(s,0,s.size()-1, 0);
     }
