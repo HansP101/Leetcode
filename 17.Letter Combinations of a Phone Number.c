@@ -7,12 +7,12 @@ public:
         vector<string> ans={};
         ans.push_back("");
         for(auto it: digits){
-            BackTracking(it, ans);
+            AddingUP(it, ans);
         }
         return ans;
     }
 
-    void BackTracking(char c, vector<string>&ans){
+    void AddingUP(char c, vector<string>&ans){
         vector<string> temp;
         auto it=pMap.find(c);
         for(auto it2: it->second){
