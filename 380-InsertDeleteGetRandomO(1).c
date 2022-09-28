@@ -8,7 +8,7 @@ public:
     bool insert(int val) {
         if(arrLocMap.find(val)==arrLocMap.end()){
             array.push_back(val);
-            arrLocMap[val]=array.size();
+            arrLocMap[val]=array.size()-1;
             return true;
         }else
             return false;
