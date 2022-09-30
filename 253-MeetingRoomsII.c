@@ -36,3 +36,24 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    struct Comparator{
+        bool operator()(int &a, int &b){return a>b;}//minHeap;
+    };
+   
+    int minMeetingRooms(vector<vector<int>>& intervals) {
+        int ans=1;
+        priority_queue<int, vector<int>,  Comparator> pq;
+        sort(intervals.begin(), intervals.end(), [](auto &a, auto &b){return a[0]==b[0]? a[1]<b[1]: a[0]<b[0];});
+        pq.push(intervals[0][1]);
+        for(auto it=intervals.begin()+1;it!=intervals.end(); it++){
+            if((*it)[0]>=pq.top())pq.pop(); //previous meeting is already over
+            pq.push((*it)[1]);
+            int temp=pq.size();
+            ans=max(ans, temp);
+        }
+        return ans;
+    }
+};
