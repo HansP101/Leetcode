@@ -1,39 +1,37 @@
 class Solution {
 public:
     int calculate(string s) {
-        int len = s.length();
-        if (len == 0) return 0;
-        stack<int> stack;
-        int currentNumber = 0;
-        char operation = '+';
-        for (int i = 0; i < len; i++) {
-            char currentChar = s[i];
-            if (isdigit(currentChar)) {
-                currentNumber = (currentNumber * 10) + (currentChar - '0');
+        stack<int> calStack;
+        int curNum=0;;
+        char prevOperation='+';
+        for(int i=0; i<s.size(); i++){
+            char curChar=s[i];
+            if(isdigit(curChar)){
+                curNum=curNum*10+(curChar-'0');
             }
-            if (!isdigit(currentChar) && !iswspace(currentChar) || i == len - 1) {
-                if (operation == '-') {
-                    stack.push(-currentNumber);
-                } else if (operation == '+') {
-                    stack.push(currentNumber);
-                } else if (operation == '*') {
-                    int stackTop = stack.top();
-                    stack.pop();
-                    stack.push(stackTop * currentNumber);
-                } else if (operation == '/') {
-                    int stackTop = stack.top();
-                    stack.pop();
-                    stack.push(stackTop / currentNumber);
+            if((!isdigit(curChar) and !iswspace(curChar)) or i==s.size()-1){
+                if(prevOperation=='+')
+                    calStack.push(curNum);
+                else if (prevOperation=='-')
+                    calStack.push(-curNum);
+                else if (prevOperation=='*'){
+                    auto prevNumer=calStack.top();
+                    calStack.pop();
+                    calStack.push(prevNumer*curNum);
                 }
-                operation = currentChar;
-                currentNumber = 0;
+                else if (prevOperation=='/'){
+                    auto prevNumer=calStack.top();
+                    calStack.pop();
+                    calStack.push(prevNumer/curNum);
+                }
+                prevOperation=curChar;
+                curNum=0;
             }
         }
-        int result = 0;
-        while (stack.size() != 0) {
-            result += stack.top();
-            stack.pop();
-        }
-        return result;
+        int ans=0;
+        while(!calStack.empty()){
+            ans+=calStack.top();
+            calStack.pop();}
+        return ans;
     }
 };
