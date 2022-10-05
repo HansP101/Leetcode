@@ -17,6 +17,24 @@ public:
         neighbors = _neighbors;
     }
 };
+//DFS approach
+class Solution {
+public:
+    unordered_map<Node*, Node*> copyMap;
+    Node* cloneGraph(Node* node) {
+        if (node==nullptr) return nullptr;
+        if(copyMap.find(node)==copyMap.end()){
+            copyMap[node]=new Node(node->val);
+            for(auto it: node->neighbors){
+                copyMap[node]->neighbors.push_back(cloneGraph(it));
+            }
+        }
+        else return copyMap[node];
+        return copyMap[node];
+    }
+};
+
+//BFS approach
 */
 class Solution {
 public:
