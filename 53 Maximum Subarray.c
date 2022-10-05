@@ -2,7 +2,7 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        //kaden's algorithm
+    //Kadane's algorithm.
         int subSum=0;
         int maxSum=INT_MIN;
         
