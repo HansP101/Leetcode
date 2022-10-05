@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int getSum(int a, int b) {
+    //sum only with bit operation wihtou + operation
+    int getSum(int a, int b) { 
         uint32_t carry; //
         while(b!=0){
              carry=a&b;
