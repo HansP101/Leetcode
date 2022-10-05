@@ -29,6 +29,23 @@ public:
         return dummyNode->next;
     }
 };
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* dummy=new ListNode(-1);
+        dummy->next=head;
+        if (head==nullptr)return nullptr;
+        ListNode* temp=dummy;
+        while(temp->next){
+            if(temp->next->val==val)
+                temp->next=temp->next->next;
+            else
+                temp=temp->next;
+        }
+        return dummy->next;
+    }
+};
 /**
  * Definition for singly-linked list.
  * struct ListNode {
