@@ -14,8 +14,10 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* ans;
         ListNode* fast=head;
-        ListNode* slow=head;
-        for(int i=0; i<n; i++) fast=fast->next;
+        ListNode* slow=head; 
+        
+        for(int i=0; i<n; i++) fast=fast->next; //Key point 는 fast와 slow 차이를 n 으로 만들고, 계속 fast를 끝까지 밀면 slow가 포인팅 하는것이 끝에서 N
+       
         if(fast==nullptr){
             ans=head->next;
             delete head;
