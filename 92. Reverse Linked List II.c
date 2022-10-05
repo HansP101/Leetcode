@@ -17,12 +17,12 @@ public:
         dummy->next=head;//dummy is for the case when iteration (ie left=1 case), dummy will take the "prev" node role. 
        
         for(int i=0; i<left-1; i++) prev=prev->next;
-          ListNode* cur=prev->next; //current will keep drifiting forward
+          ListNode* cur=prev->next; //current (just next one) will keep drifiting forward to the end
         for(int i=0; i<right-left; i++){
         ListNode* temp=prev->next;
-        prev->next=cur->next;
-        cur->next=cur->next->next;
-        prev->next->next=temp;}
+        prev->next=cur->next; //cur->next (far end) one will be next to prev.
+        cur->next=cur->next->next; //for following one will come to next to prev later. 
+        prev->next->next=temp;} //prev->next got updated with the one far end, now this one has to link to exisiting temp one.
     
          return dummy->next;
     }
