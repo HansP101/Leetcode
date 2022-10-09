@@ -31,7 +31,7 @@ public:
     bool wordBreak(string s, vector<string>& wordDict) {
         unordered_set<string> word_set(wordDict.begin(), wordDict.end());
         queue<int> q;
-        vector<bool> visited(s.length(), false);
+        vector<bool> visited(s.length(), false); // 이게 없으면 이미 실패했던것을 또 시도하게 된다 낭비이고, 결국엔 TLE 까지 간다. 
         q.push(0);
         while(q.size()){
             int start=q.front();
