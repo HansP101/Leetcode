@@ -56,18 +56,16 @@ DP
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> word_set(wordDict.begin(), wordDict.end());
-        vector<bool> dp(s.length()+1, false);
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+        vector<bool> dp(s.size()+1, false);
         dp[0]=true;
-        
-        for(int i=1; i<=s.length(); i++){
-            for(int j=0; j<i; j++){
-                if(dp[j] and word_set.find(s.substr(j, i-j))!=word_set.end()){
-                    dp[i]=true;
-                    break;
-                }
+        for(int i=1; i<=s.size(); i++){//i: end point
+            if (dp[i]==true) continue;
+            for(int j=0; j<i; j++){ //j: starting point
+                if(dp[j]==true and wordSet.find(s.substr(j, i-j))!=wordSet.end()) dp[i]=true;
             }
         }
-        return dp[s.length()];
+        return dp[s.size()];
+        
     }
 };
