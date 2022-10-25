@@ -6,7 +6,7 @@ public:
     }
     int binarySearch(int start, int end, vector<int>& nums){
         while(start<end){
-            int mid=(start+end)/2;
+            int mid=start+(end-start)/2;
             if(nums[mid]>nums[mid+1]) //Peak exist until mid.
                 end=mid;
             else start=mid+1; //peak does not exist until mid
