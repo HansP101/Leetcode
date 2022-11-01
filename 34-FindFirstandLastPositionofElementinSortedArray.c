@@ -5,6 +5,15 @@ And in a binary search for 5:
 1 2 3 4 5 5 5 6 7 9
              ^-- upper bound: index6, last "5"
 */
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int low=lower_bound(nums.begin(), nums.end(), target)-nums.begin();
+        int high=upper_bound(nums.begin(), nums.end(), target)-nums.begin()-1;
+        if(low<=high and nums[low]==target) return{low, high};
+        else return {-1, -1};
+    }
+};
 
 class Solution{
     public:
