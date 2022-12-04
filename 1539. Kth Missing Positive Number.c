@@ -14,7 +14,7 @@ public:
             else
                 r=mid-1;
         }
-      return r+k+1;   //Nov30/2022 왜그러지?
+      return r+k+1;   //이미 필요한 k 숫자에 이미 r+1 개의 숫자는 이미 있기 때문이다.
         
     } 
 };
