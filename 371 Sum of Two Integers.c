@@ -28,3 +28,24 @@ public:
         return ans;
     }
 };
+
+int sumInt(int a, int b){
+    u_int32_t carry=0;
+    carry=a&b;
+    a=a^b;
+    carry<<=1;
+    while(carry){
+        int temp=a^carry;
+        carry=a&carry;
+        carry<<=1;
+        a=temp;
+    }
+    
+    return a;
+}
+
+int main(){ 
+    int a=3, b=4;
+    printf("%d", sumInt(a, b));
+    return 0;
+}
